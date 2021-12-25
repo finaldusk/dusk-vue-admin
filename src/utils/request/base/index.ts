@@ -35,11 +35,17 @@ class DuskRequest {
     this.instance.interceptors.response.use(
       (res) => {
         // 公共响应拦截器
-        const data = res.data as IResponse
-        if (data.errors != null && data.errors.length > 0) {
-          console.error(`发生错误:${data.errors.map((t) => t.message).join()}`)
+        if (res.config.responseType === 'json') {
+          const data = res.data as IResponse
+          if (data.errors != null && data.errors.length > 0) {
+            console.error(
+              `发生错误:${data.errors.map((t) => t.message).join()}`
+            )
+          }
+          return data
+        } else {
+          return res
         }
-        return data
       },
       (err) => {
         // 公共响应错误拦截器
