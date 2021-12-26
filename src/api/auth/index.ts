@@ -6,7 +6,7 @@ enum LoginAPI {
   AccountLogin = '/login'
 }
 
-export function LoginRequest(userLoginDto: IUserLogin) {
+export function loginRequest(userLoginDto: IUserLogin) {
   return duskRequest.post<IResponse<ILoginResult>>({
     url: LoginAPI.AccountLogin,
     data: userLoginDto

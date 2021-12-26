@@ -1,8 +1,29 @@
-import { createStore } from 'vuex'
+import { createStore, Store, useStore as useVuexStore } from 'vuex'
 
-export default createStore({
-  state: {},
-  mutations: {},
+import user from './user/user'
+
+import { IRootState, IStoreType } from './types'
+
+const store = createStore<IRootState>({
+  state() {
+    return {
+      entireMenu: []
+    }
+  },
+  mutations: {
+    changeEntireMenu(state, list) {
+      state.entireMenu = list
+    }
+  },
+  getters: {},
   actions: {},
-  modules: {}
+  modules: {
+    user
+  }
 })
+
+export function useStore(): Store<IStoreType> {
+  return useVuexStore()
+}
+
+export default store

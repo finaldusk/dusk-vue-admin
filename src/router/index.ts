@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Layout from '@/layout/index.vue'
-
+import storageFactory from '@/utils/storage'
+const storage = new storageFactory()
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -18,12 +19,27 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/About.vue')
       }
     ]
+  },
+  {
+    path: '/Login',
+    name: 'Login',
+    component: () => import('@/views/login/index.vue')
   }
 ]
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes
+})
+
+// 导航守卫
+router.beforeEach((to) => {
+  if (to.path !== '/login') {
+    const token = storage.get('token')
+    if (!token) {
+      return '/login'
+    }
+  }
 })
 
 export default router
