@@ -10,6 +10,9 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
+    "@antv/g2": "^4.1.37",
+    "@antv/g6": "^4.5.1",
+    "@antv/x6": "^1.29.1",
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
     "element-plus": "^1.0.2-beta.28",
@@ -20,6 +23,7 @@
   "devDependencies": {
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
+    "@types/mockjs": "^1.0.4",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -39,6 +43,7 @@
     "eslint-plugin-vue": "^7.0.0",
     "husky": "^7.0.0",
     "lint-staged": "^9.5.0",
+    "mockjs": "^1.1.0",
     "prettier": "^2.2.1",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
