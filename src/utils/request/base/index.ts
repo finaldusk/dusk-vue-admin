@@ -8,6 +8,7 @@ class DuskRequest {
   interceptors?: DuskRequestInterceptors
   constructor(config: DuskRequestConfig) {
     this.instance = axios.create(config)
+    this.interceptors = config.interceptors
 
     // 实例拦截器
     this.instance.interceptors.request.use(
